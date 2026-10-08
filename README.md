@@ -1,0 +1,106 @@
+# Horizon RAG
+
+Horizon RAG is a retrieval workbench. It is for building the part of an AI assistant that looks things up: you give it your sources, ask a question, and see which passages it finds and why each one ranked where it did. Every run is kept unchanged, so you can tune the search and compare any two runs side by side.
+
+It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
+
+> **This is an early version (0.1).** It works on a built-in sample only: 14 short passages about the Belgian 6 % VAT rate for renovation. They were **invented for the design and are not real law**. Using your own sources, getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+
+**[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
+
+---
+
+## 1. Download
+
+Open the [latest release](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest), scroll down to **Assets** and click the file for your computer:
+
+| Your computer | File to download |
+|---|---|
+| Mac with an Apple chip (M1, M2, M3, M4…) | `Horizon-RAG-<version>-arm64.dmg` |
+| Mac with an Intel processor | `Horizon-RAG-<version>-x64.dmg` |
+| Windows 10 or 11 | `Horizon-RAG-Setup-<version>-x64.exe` |
+| Linux (most distributions) | `Horizon-RAG-<version>-x86_64.AppImage` |
+| Linux (Ubuntu, Debian and similar, as a package) | `Horizon-RAG-<version>-amd64.deb` |
+
+Not sure which Mac you have? Click the Apple menu  › **About This Mac**. If it says **Chip: Apple M…**, take the Apple chip file; if it says **Processor: Intel**, take the Intel file.
+
+You can ignore the other files (`.zip`, `.blockmap`, `.yml`): the app uses them for its updates.
+
+## 2. Install
+
+Horizon RAG is made by one person for friends and family, so it isn't registered with Apple or Microsoft. Your computer will therefore warn you the first time you open it. That's expected; the steps below show how to get past the warning once.
+
+### Mac
+
+1. Open the `.dmg` file you downloaded.
+2. Drag **Horizon RAG** onto the **Applications** folder in the window that appears.
+3. Open **Horizon RAG** from your Applications folder (or with Spotlight).
+4. macOS says it can't check Horizon RAG for malicious software and won't open it. Click **Done** (or **OK**).
+5. Open **System Settings** › **Privacy & Security**, scroll down to the message about Horizon RAG and click **Open Anyway**. Confirm with your password or Touch ID, then click **Open Anyway** once more.
+
+From then on Horizon RAG opens normally. Needs macOS 12 (Monterey) or later.
+
+### Windows
+
+1. Double-click `Horizon-RAG-Setup-<version>-x64.exe`.
+2. If Windows shows **Windows protected your PC**, click **More info**, then **Run anyway**.
+3. Horizon RAG installs by itself (no administrator rights needed) and opens. You'll find it in the Start menu afterwards.
+
+Needs Windows 10 or 11, 64-bit.
+
+### Linux
+
+**AppImage** (works on most distributions):
+
+```sh
+chmod +x Horizon-RAG-*-x86_64.AppImage
+./Horizon-RAG-*-x86_64.AppImage
+```
+
+Or right-click the file › **Properties** › **Permissions**, tick **Allow executing file as program**, then double-click it. On Ubuntu 22.04 or later, if it doesn't start, install FUSE first: `sudo apt install libfuse2` (on Ubuntu 24.04: `sudo apt install libfuse2t64`).
+
+**Debian package:**
+
+```sh
+sudo apt install ./Horizon-RAG-*-amd64.deb
+```
+
+Horizon RAG then appears in your applications menu.
+
+## 3. Getting started
+
+Horizon RAG opens on **Retrieve**, with the built-in sample and a question about it: *Does the 6% renovation VAT apply to a 12 year old house?* Three earlier runs are already there, so there is something to compare from the start.
+
+The window has three parts:
+
+- **The Mixing Desk** on the left decides how passages are found and ranked:
+  - six weights: semantic search, keyword search, metadata, recency, authority and diversity;
+  - how many passages to rank (Top K);
+  - the similarity threshold;
+  - reranking on or off;
+  - presets such as **Hybrid**, **Precision** and **Recall**.
+  
+  Move a slider, then click **Rerun** (or press ⌘↵ on a Mac, Ctrl+Enter elsewhere). **Save preset** keeps settings you like.
+- **The Ranking** in the middle shows the passages the run found, best first. For each one you see its score, its parts and whether it went into the answer's context. Arrows show how far each passage moved since the run before.
+- **Why this rank** on the right explains the passage you click: its text, how much each weight contributed, and the diversity penalty. **Remove from context** leaves a passage out of the next run, so you can see what changes without it.
+
+**Run history** (the clock at the top) lists every run. Tick two to see what changed between them: settings, ranking and scores. Click a run to load its settings onto the Mixing Desk.
+
+The toolbar on the left also has **Build**, **Explore**, **Explain**, **Evaluate** and **Sources**. These say what they will show; they arrive in later versions.
+
+Your runs and presets are kept on your computer, in the app. This version doesn't use the internet, except to look for updates.
+
+## Updates
+
+- **Windows** and **Linux AppImage**: new versions download in the background and install the next time you restart Horizon RAG.
+- **Mac** and **Linux .deb**: new versions appear on the [releases page](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases). Install them the same way as the first time. Your runs are kept.
+
+## Uninstall
+
+- **Mac**: drag **Horizon RAG** from Applications to the Bin.
+- **Windows**: **Settings › Apps › Installed apps**, find Horizon RAG › **Uninstall**.
+- **Linux**: delete the AppImage, or run `sudo apt remove horizon-rag`.
+
+## Questions or problems
+
+Contact Bart Jan directly, or [open an issue](https://github.com/BartJanCoppens/Horizon-RAG-Releases/issues) here.
