@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.1).** It works on a built-in sample only: 14 short passages about the Belgian 6 % VAT rate for renovation. They were **invented for the design and are not real law**. Using your own sources, getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.2).** It works on a built-in sample only: 14 short passages about the Belgian 6 % VAT rate for renovation. They were **invented for the design and are not real law**. You can save your work as project files, undo changes and keep versions. Using your own sources, getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -71,7 +71,7 @@ Horizon RAG then appears in your applications menu.
 
 Horizon RAG opens on **Retrieve**, with the built-in sample and a question about it: *Does the 6% renovation VAT apply to a 12 year old house?* Three earlier runs are already there, so there is something to compare from the start.
 
-The window has three parts:
+Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**). Below it, the window has three parts:
 
 - **The Mixing Desk** on the left decides how passages are found and ranked:
   - six weights: semantic search, keyword search, metadata, recency, authority and diversity;
@@ -88,12 +88,33 @@ The window has three parts:
 
 The toolbar on the left also has **Build**, **Explore**, **Explain**, **Evaluate** and **Sources**. These say what they will show; they arrive in later versions.
 
-Your runs and presets are kept on your computer, in the app. This version doesn't use the internet, except to look for updates.
+Your runs and presets are kept on your computer, in the app, as you work. This version doesn't use the internet, except to look for updates and when you test a key in **Models & keys**.
+
+## 4. Saving your work
+
+- **File › Save** (⌘S on a Mac, Ctrl+S elsewhere) saves the project as a `.hrag` file. The first time it asks where; after that it saves to the same file. **File › Save As…** saves a copy somewhere else.
+- **File › Open…** (⌘O or Ctrl+O) opens a `.hrag` file. You can also double-click a `.hrag` file: it has Horizon RAG's own icon.
+- If the project you have open has work that isn't saved to a file, **Open…** and **File › New project** ask first: save it, replace it, or cancel.
+- A file that is damaged, or was made by a newer version of Horizon RAG, isn't opened, and Horizon RAG says why.
+
+## 5. Undo and versions
+
+- **Edit › Undo** (⌘Z or Ctrl+Z) takes back the last change to the Mixing Desk or your presets; **Edit › Redo** brings it back. Moving a slider counts as one change. Runs are never undone.
+- **File › Save a version…** keeps the whole project as it is now, with a name and a note. **File › Versions…** lists them; **Restore…** brings one back (and **Undo** takes the restore back).
+- Horizon RAG also keeps **safety points** by itself, just before work is replaced.
+
+## 6. Models and keys
+
+**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. This version doesn't call any AI yet: later versions use the model to answer questions and the embeddings to index your sources.
+
+## 7. Help
+
+Press **F1** (or choose **Help › Horizon RAG Help**) for the help: every topic, a search, and **Show me** buttons that point at what a topic describes. **Help › Keyboard shortcuts** lists every key, and **Help › About Horizon RAG** shows which version you have.
 
 ## Updates
 
 - **Windows** and **Linux AppImage**: new versions download in the background and install the next time you restart Horizon RAG.
-- **Mac** and **Linux .deb**: new versions appear on the [releases page](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases). Install them the same way as the first time. Your runs are kept.
+- **Mac** and **Linux .deb**: Horizon RAG shows a notice when a new version is out; click **Download** and install it the same way as the first time. New versions are also on the [releases page](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases). Your work is kept.
 
 ## Uninstall
 
