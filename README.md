@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.2).** It works on a built-in sample only: 14 short passages about the Belgian 6 % VAT rate for renovation. They were **invented for the design and are not real law**. You can save your work as project files, undo changes and keep versions. Using your own sources, getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.3).** It works on a built-in sample only: 14 short passages about the Belgian 6 % VAT rate for renovation. They were **invented for the design and are not real law**. You can save your work as project files, undo changes and keep versions. Version 0.3 adds, underneath, the engine that will read and index your own sources; you'll use it when the Sources view arrives in the next version. Getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -105,7 +105,7 @@ Your runs and presets are kept on your computer, in the app, as you work. This v
 
 ## 6. Models and keys
 
-**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. This version doesn't call any AI yet: later versions use the model to answer questions and the embeddings to index your sources.
+**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. This version doesn't use any AI yet: later versions use the model to answer questions and the embeddings to index your sources.
 
 ## 7. Help
 
