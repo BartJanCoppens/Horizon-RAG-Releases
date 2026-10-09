@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.3).** It works on a built-in sample only: 14 short passages about the Belgian 6 % VAT rate for renovation. They were **invented for the design and are not real law**. You can save your work as project files, undo changes and keep versions. Version 0.3 adds, underneath, the engine that will read and index your own sources; you'll use it when the Sources view arrives in the next version. Getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.4).** It opens on an empty project, and **Help › Open the example** opens Tax Noir's okf-be-vat pack (Belgian VAT law, word for word), indexes it and runs a question about it. You can save your work as project files, undo changes and keep versions. Adding your own sources comes in the next version; getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -69,7 +69,9 @@ Horizon RAG then appears in your applications menu.
 
 ## 3. Getting started
 
-Horizon RAG opens on **Retrieve**, with the built-in sample and a question about it: *Does the 6% renovation VAT apply to a 12 year old house?* Three earlier runs are already there, so there is something to compare from the start.
+Horizon RAG opens on **Retrieve**, with an empty project. Click **Open the example** (or choose **Help › Open the example**). Horizon RAG indexes Tax Noir's okf-be-vat pack of Belgian VAT law, showing each stage as it goes, then runs its question: *Does the 6 per cent rate apply to renovating a dwelling first occupied 12 years ago?*
+
+With an OpenAI key (see **Models and keys**), passages are matched by meaning; without one, Horizon RAG matches them by their words and says so. The example starts at a similarity threshold of 0.42: move the slider and run again to see more, or fewer, passages.
 
 Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**). Below it, the window has three parts:
 
@@ -88,7 +90,7 @@ Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**)
 
 The toolbar on the left also has **Build**, **Explore**, **Explain**, **Evaluate** and **Sources**. These say what they will show; they arrive in later versions.
 
-Your runs and presets are kept on your computer, in the app, as you work. This version doesn't use the internet, except to look for updates and when you test a key in **Models & keys**.
+Your runs, presets and the example's index are kept on your computer, in the app, as you work. This version uses the internet only to look for updates, when you test a key in **Models & keys**, and, when you have added OpenAI's key, to index the example and embed your questions with it.
 
 ## 4. Saving your work
 
@@ -105,7 +107,7 @@ Your runs and presets are kept on your computer, in the app, as you work. This v
 
 ## 6. Models and keys
 
-**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. This version doesn't use any AI yet: later versions use the model to answer questions and the embeddings to index your sources.
+**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. With OpenAI's key, its embedding model indexes the example and your questions; later versions use the AI model to answer questions.
 
 ## 7. Help
 
