@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.6).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). You can save your work as project files, undo changes and keep versions. Getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.7).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, move them to another computer with Export index… and Import index…, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). You can save your work as project files, undo changes and keep versions. Getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -113,7 +113,8 @@ Your runs, presets, sources' texts and indexes are kept on your computer, in the
 - **Re-index** appears at the top of Sources once your OpenAI key is set (**Models & keys**): it indexes your documents again with OpenAI's embeddings, so passages are matched by meaning rather than by words. Runs made before then read "no longer in the knowledge base".
 - **Clear unused data…** at the foot of Sources deletes the indexes and documents this project no longer uses, after asking. Other project files that used them will need their sources added again.
 - A source whose files couldn't all be read says which, and why, under its row.
-- Your sources' texts and indexes stay on the computer that indexed them: a `.hrag` file carries their names, not their texts. On another computer, adding a source starts a new knowledge base there.
+- Your sources' texts and indexes stay on the computer that indexed them: a `.hrag` file carries their names, not their texts.
+- **To move a knowledge base to another computer**, use **File › Export index…**: it saves a `.hrag-index` file (at most 256 MB) with your documents and their vectors. On the other computer, open the project's `.hrag` file, then **File › Import index…** (the empty Retrieve screen offers it too). The index goes only into the project it belongs to. Without it, adding a source there starts a new knowledge base.
 
 ## 5. Saving your work
 
