@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.5).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack) and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). You can save your work as project files, undo changes and keep versions. Keeping sources up to date (Sync now) and re-indexing come in the next version; getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.6).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). You can save your work as project files, undo changes and keep versions. Getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -108,6 +108,10 @@ Your runs, presets, sources' texts and indexes are kept on your computer, in the
   Give it a name, and say what its documents are: type, jurisdiction, year and in-force dates. **Add & index** reads, splits and indexes it, stage by stage. You can add several; they are indexed one after the other, and **Stop** stops one. If one fails, it says why, with **Try again**.
 - If nothing reaches the threshold when you run, try a lower threshold: without an OpenAI key, scores are lower, and Horizon RAG suggests about 0.40.
 - **Pause** leaves a source out of the next runs without forgetting it; **Resume** brings it back. **Remove** takes a source out of the project, after asking; it can't be undone.
+- **Sync now** (the round arrow in a web page's or a folder's row) reads it again and indexes only what changed. For a folder, choose the folder again. If you pause or remove a source while it syncs, that stays.
+- A web page can also be checked **Daily** or **Weekly** while Horizon RAG is open: choose it under **Sync** when you add the page (Weekly by default), or change it in the page's row. A check that fails is tried again later.
+- **Re-index** appears at the top of Sources once your OpenAI key is set (**Models & keys**): it indexes your documents again with OpenAI's embeddings, so passages are matched by meaning rather than by words. Runs made before then read "no longer in the knowledge base".
+- **Clear unused data…** at the foot of Sources deletes the indexes and documents this project no longer uses, after asking. Other project files that used them will need their sources added again.
 - A source whose files couldn't all be read says which, and why, under its row.
 - Your sources' texts and indexes stay on the computer that indexed them: a `.hrag` file carries their names, not their texts. On another computer, adding a source starts a new knowledge base there.
 
