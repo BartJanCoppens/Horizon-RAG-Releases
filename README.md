@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.4).** It opens on an empty project, and **Help › Open the example** opens Tax Noir's okf-be-vat pack (Belgian VAT law, word for word), indexes it and runs a question about it. You can save your work as project files, undo changes and keep versions. Adding your own sources comes in the next version; getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.5).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack) and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). You can save your work as project files, undo changes and keep versions. Keeping sources up to date (Sync now) and re-indexing come in the next version; getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -69,9 +69,11 @@ Horizon RAG then appears in your applications menu.
 
 ## 3. Getting started
 
-Horizon RAG opens on **Retrieve**, with an empty project. Click **Open the example** (or choose **Help › Open the example**). Horizon RAG indexes Tax Noir's okf-be-vat pack of Belgian VAT law, showing each stage as it goes, then runs its question: *Does the 6 per cent rate apply to renovating a dwelling first occupied 12 years ago?*
+Horizon RAG opens on **Retrieve**, with an empty project. Click **Add source** to add your own (see **Your sources** below), or **Open the example** (also **Help › Open the example**) to try it first. For the example, Horizon RAG indexes Tax Noir's okf-be-vat pack of Belgian VAT law, showing each stage as it goes, then runs its question: *Does the 6 per cent rate apply to renovating a dwelling first occupied 12 years ago?*
 
 With an OpenAI key (see **Models and keys**), passages are matched by meaning; without one, Horizon RAG matches them by their words and says so. The example starts at a similarity threshold of 0.42: move the slider and run again to see more, or fewer, passages.
+
+Type any question in the field at the top (**Ask the knowledge base…**) and press **Enter** to run it.
 
 Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**). Below it, the window has three parts:
 
@@ -88,28 +90,45 @@ Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**)
 
 **Run history** (the clock at the top) lists every run. Tick two to see what changed between them: settings, ranking and scores. Click a run to load its settings onto the Mixing Desk.
 
-The toolbar on the left also has **Build**, **Explore**, **Explain**, **Evaluate** and **Sources**. These say what they will show; they arrive in later versions.
+The toolbar on the left also has **Sources** (see below), and **Build**, **Explore**, **Explain** and **Evaluate**, which say what they will show; they arrive in later versions.
 
-Your runs, presets and the example's index are kept on your computer, in the app, as you work. This version uses the internet only to look for updates, when you test a key in **Models & keys**, and, when you have added OpenAI's key, to index the example and embed your questions with it.
+Your runs, presets, sources' texts and indexes are kept on your computer, in the app, as you work. This version uses the internet only to look for updates, when you test a key in **Models & keys**, to read the web pages you add, and, when you have added OpenAI's key, to index your sources and embed your questions with it (their text then goes to OpenAI).
 
-## 4. Saving your work
+## 4. Your sources
+
+**Sources** (the database icon in the toolbar on the left) lists your sources: how many documents and passages each holds, how often your runs retrieve it, when it was last read, and its status.
+
+- **Add source** (on Sources, on the empty Retrieve screen, or **File › Add source…**) reads:
+  - files: PDF, Word, HTML, Markdown or text, up to 50 MB each;
+  - a folder: every file in it that Horizon RAG can read; images and hidden files are left out;
+  - a web page, by its address;
+  - pasted text;
+  - an OKF knowledge pack, as a .zip or its folder.
+  
+  Give it a name, and say what its documents are: type, jurisdiction, year and in-force dates. **Add & index** reads, splits and indexes it, stage by stage. You can add several; they are indexed one after the other, and **Stop** stops one. If one fails, it says why, with **Try again**.
+- If nothing reaches the threshold when you run, try a lower threshold: without an OpenAI key, scores are lower, and Horizon RAG suggests about 0.40.
+- **Pause** leaves a source out of the next runs without forgetting it; **Resume** brings it back. **Remove** takes a source out of the project, after asking; it can't be undone.
+- A source whose files couldn't all be read says which, and why, under its row.
+- Your sources' texts and indexes stay on the computer that indexed them: a `.hrag` file carries their names, not their texts. On another computer, adding a source starts a new knowledge base there.
+
+## 5. Saving your work
 
 - **File › Save** (⌘S on a Mac, Ctrl+S elsewhere) saves the project as a `.hrag` file. The first time it asks where; after that it saves to the same file. **File › Save As…** saves a copy somewhere else.
 - **File › Open…** (⌘O or Ctrl+O) opens a `.hrag` file. You can also double-click a `.hrag` file: it has Horizon RAG's own icon.
 - If the project you have open has work that isn't saved to a file, **Open…** and **File › New project** ask first: save it, replace it, or cancel.
 - A file that is damaged, or was made by a newer version of Horizon RAG, isn't opened, and Horizon RAG says why.
 
-## 5. Undo and versions
+## 6. Undo and versions
 
 - **Edit › Undo** (⌘Z or Ctrl+Z) takes back the last change to the Mixing Desk or your presets; **Edit › Redo** brings it back. Moving a slider counts as one change. Runs are never undone.
 - **File › Save a version…** keeps the whole project as it is now, with a name and a note. **File › Versions…** lists them; **Restore…** brings one back (and **Undo** takes the restore back).
 - Horizon RAG also keeps **safety points** by itself, just before work is replaced.
 
-## 6. Models and keys
+## 7. Models and keys
 
-**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. With OpenAI's key, its embedding model indexes the example and your questions; later versions use the AI model to answer questions.
+**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. With OpenAI's key, its embedding model indexes your sources, the example and your questions; later versions use the AI model to answer questions.
 
-## 7. Help
+## 8. Help
 
 Press **F1** (or choose **Help › Horizon RAG Help**) for the help: every topic, a search, and **Show me** buttons that point at what a topic describes. **Help › Keyboard shortcuts** lists every key, and **Help › About Horizon RAG** shows which version you have.
 
