@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.7).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, move them to another computer with Export index… and Import index…, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). You can save your work as project files, undo changes and keep versions. Getting answers from an AI, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.8).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, move them to another computer with Export index… and Import index…, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). With an AI model set up, each run also answers the question in short claims that cite their passages, with every quote checked. You can save your work as project files, undo changes and keep versions. The Build perspective, evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -81,18 +81,20 @@ Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**)
   - six weights: semantic search, keyword search, metadata, recency, authority and diversity;
   - how many passages to rank (Top K);
   - the similarity threshold;
-  - reranking on or off;
+  - query transformation and reranking, each on or off;
   - presets such as **Hybrid**, **Precision** and **Recall**.
   
   Move a slider, then click **Rerun** (or press ⌘↵ on a Mac, Ctrl+Enter elsewhere). **Save preset** keeps settings you like.
 - **The Ranking** in the middle shows the passages the run found, best first. For each one you see its score, its parts and whether it went into the answer's context. Arrows show how far each passage moved since the run before.
 - **Why this rank** on the right explains the passage you click: its text, how much each weight contributed, and the diversity penalty. **Remove from context** leaves a passage out of the next run, so you can see what changes without it.
 
+**Answers.** With an AI model set up in **Models & keys**, every run also answers the question. **Query transformation** rewrites the question first; **reranking** has the AI score the passages above the threshold. The answer is a few short claims, each citing the passages it rests on as [1], [2]…; an AI judge checks every claim against every passage, and Horizon RAG checks that each quote really is in its passage. When no claim the question needs is supported, the answer says the passages don't establish it. Open **Explain** in the toolbar to see the answer, each claim's support, what was retrieved but not used, and anything skipped or failed. Without an AI model, runs find and rank passages as before, and Explain says why there is no answer. While a run works, the status line at the bottom shows its stage.
+
 **Run history** (the clock at the top) lists every run. Tick two to see what changed between them: settings, ranking and scores. Click a run to load its settings onto the Mixing Desk.
 
-The toolbar on the left also has **Sources** (see below), and **Build**, **Explore**, **Explain** and **Evaluate**, which say what they will show; they arrive in later versions.
+The toolbar on the left also has **Sources** (see below), **Explain** (the answer, see above), and **Build**, **Explore** and **Evaluate**, which say what they will show; they arrive in later versions.
 
-Your runs, presets, sources' texts and indexes are kept on your computer, in the app, as you work. This version uses the internet only to look for updates, when you test a key in **Models & keys**, to read the web pages you add, and, when you have added OpenAI's key, to index your sources and embed your questions with it (their text then goes to OpenAI).
+Your runs, presets, sources' texts and indexes are kept on your computer, in the app, as you work. This version uses the internet only to look for updates, when you test a key in **Models & keys**, to read the web pages you add, and, when you have added OpenAI's key, to index your sources and embed your questions with it (their text then goes to OpenAI), and, when an AI model is set up, to answer: your question and the passages found then go to that model's provider.
 
 ## 4. Your sources
 
@@ -131,7 +133,7 @@ Your runs, presets, sources' texts and indexes are kept on your computer, in the
 
 ## 7. Models and keys
 
-**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. With OpenAI's key, its embedding model indexes your sources, the example and your questions; later versions use the AI model to answer questions.
+**File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. With OpenAI's key, its embedding model indexes your sources, the example and your questions; the AI model answers your questions, rewrites them and reranks the passages.
 
 ## 8. Help
 
