@@ -4,7 +4,7 @@ Horizon RAG is a retrieval workbench. It is for building the part of an AI assis
 
 It belongs to the Horizon suite, next to [Horizon](https://github.com/BartJanCoppens/Horizon) for presentations and [Horizon Calc](https://github.com/BartJanCoppens/Horizon-Calc-Releases) for spreadsheets. It works on **Mac**, **Windows** and **Linux**. It's free and needs no account.
 
-> **This is an early version (0.8).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, move them to another computer with Export index… and Import index…, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). With an AI model set up, each run also answers the question in short claims that cite their passages, with every quote checked. You can save your work as project files, undo changes and keep versions. The Build perspective, evaluation and the Knowledge Galaxy come in later versions.
+> **This is an early version (0.9).** It opens on an empty project. Add your own sources (files, a folder, a web page, pasted text or an OKF pack), keep them up to date with Sync now, move them to another computer with Export index… and Import index…, and ask them a question, or open the example: Tax Noir's okf-be-vat pack (Belgian VAT law, word for word). With an AI model set up, each run also answers the question in short claims that cite their passages, with every quote checked. **Build** shows the pipeline as its stages, with versions you can switch between, an editable chunker, filters and a `pipeline.yaml` to export and import. You can save your work as project files, undo changes and keep versions. Evaluation and the Knowledge Galaxy come in later versions.
 
 **[⬇ Download the latest version](https://github.com/BartJanCoppens/Horizon-RAG-Releases/releases/latest)**
 
@@ -92,11 +92,22 @@ Along the top is a menu bar (**File**, **Edit**, **Run**, **View** and **Help**)
 
 **Run history** (the clock at the top) lists every run. Tick two to see what changed between them: settings, ranking and scores. Click a run to load its settings onto the Mixing Desk.
 
-The toolbar on the left also has **Sources** (see below), **Explain** (the answer, see above), and **Build**, **Explore** and **Evaluate**, which say what they will show; they arrive in later versions.
+The toolbar on the left also has **Build** and **Sources** (see below), **Explain** (the answer, see above), and **Explore** and **Evaluate**, which say what they will show; they arrive in later versions.
 
 Your runs, presets, sources' texts and indexes are kept on your computer, in the app, as you work. This version uses the internet only to look for updates, when you test a key in **Models & keys**, to read the web pages you add, and, when you have added OpenAI's key, to index your sources and embed your questions with it (their text then goes to OpenAI), and, when an AI model is set up, to answer: your question and the passages found then go to that model's provider.
 
-## 4. Your sources
+## 4. Build
+
+**Build** (the first icon in the toolbar on the left) shows your pipeline as its eleven stages, from the documents to the answer. Each card shows two live facts, such as how many documents and chunks there are, Top K and the threshold, or the last answer's claims. While a run works, its stages light up as it goes.
+
+- Click a stage to see it in the **inspector** on the right: its settings, what the last run measured, and its part of `pipeline.yaml` (the code button). Settings you change there are the Mixing Desk's: both show the same pipeline.
+- **Pipeline versions** (v1, v2…) keep the pipeline's settings: the chunker, the six weights, Top K, the threshold, reranking, the chunks in context, Query transformation and the filters. **changed** means your settings differ from the current version. **Variant** keeps them as the next version; clicking a version loads it, and Undo takes that back. Runs record the version they ran with.
+- **Duplicate** opens a copy of the project with the same sources, knowledge base and settings, as one version and no runs. **Compare runs** opens the run history.
+- **The chunker** sets how documents are cut: strategy, size and overlap in tokens, and separator. A project without a knowledge base uses it for its first source. Once there is one, a change shows that the knowledge base was chunked otherwise, and **Re-index** builds it again from the stored documents.
+- **Filters**, in the Weighted fusion stage: choose jurisdictions (those your documents name) and document types. Matching documents score 1 on the Metadata feature, the others 0; none is left out of the ranking.
+- **pipeline.yaml** (in Build's header, or **File › Export pipeline…**) saves the pipeline's definition, stage by stage. **Import…** (or **File › Import pipeline…**) adds one as a new version and loads it. It never changes your sources, knowledge base or runs, and a file Horizon RAG can't read whole changes nothing.
+
+## 5. Your sources
 
 **Sources** (the database icon in the toolbar on the left) lists your sources: how many documents and passages each holds, how often your runs retrieve it, when it was last read, and its status.
 
@@ -118,24 +129,24 @@ Your runs, presets, sources' texts and indexes are kept on your computer, in the
 - Your sources' texts and indexes stay on the computer that indexed them: a `.hrag` file carries their names, not their texts.
 - **To move a knowledge base to another computer**, use **File › Export index…**: it saves a `.hrag-index` file (at most 256 MB) with your documents and their vectors. On the other computer, open the project's `.hrag` file, then **File › Import index…** (the empty Retrieve screen offers it too). The index goes only into the project it belongs to. Without it, adding a source there starts a new knowledge base.
 
-## 5. Saving your work
+## 6. Saving your work
 
 - **File › Save** (⌘S on a Mac, Ctrl+S elsewhere) saves the project as a `.hrag` file. The first time it asks where; after that it saves to the same file. **File › Save As…** saves a copy somewhere else.
 - **File › Open…** (⌘O or Ctrl+O) opens a `.hrag` file. You can also double-click a `.hrag` file: it has Horizon RAG's own icon.
 - If the project you have open has work that isn't saved to a file, **Open…** and **File › New project** ask first: save it, replace it, or cancel.
 - A file that is damaged, or was made by a newer version of Horizon RAG, isn't opened, and Horizon RAG says why.
 
-## 6. Undo and versions
+## 7. Undo and versions
 
-- **Edit › Undo** (⌘Z or Ctrl+Z) takes back the last change to the Mixing Desk or your presets; **Edit › Redo** brings it back. Moving a slider counts as one change. Runs are never undone.
-- **File › Save a version…** keeps the whole project as it is now, with a name and a note. **File › Versions…** lists them; **Restore…** brings one back (and **Undo** takes the restore back).
+- **Edit › Undo** (⌘Z or Ctrl+Z) takes back the last change to the Mixing Desk, Build or your presets; **Edit › Redo** brings it back. Moving a slider counts as one change. Runs are never undone.
+- **File › Save a version…** keeps the whole project as it is now, with a name and a note. **File › Versions…** lists them; **Restore…** brings one back (and **Undo** takes the restore back); the pipeline versions made since stay.
 - Horizon RAG also keeps **safety points** by itself, just before work is replaced.
 
-## 7. Models and keys
+## 8. Models and keys
 
 **File › Models & keys…** is where you choose the AI model (Claude by default) and OpenAI's embedding model, and add your keys. Keys are kept on your computer, encrypted by your system, and only sent to their own provider. **Test** checks a key with its provider, Claude's included. With OpenAI's key, its embedding model indexes your sources, the example and your questions; the AI model answers your questions, rewrites them and reranks the passages.
 
-## 8. Help
+## 9. Help
 
 Press **F1** (or choose **Help › Horizon RAG Help**) for the help: every topic, a search, and **Show me** buttons that point at what a topic describes. **Help › Keyboard shortcuts** lists every key, and **Help › About Horizon RAG** shows which version you have.
 
